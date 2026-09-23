@@ -1,4 +1,4 @@
-import { useState /*useEffect*/ } from 'react'
+import { useState, useEffect } from 'react'
 import LoginForm from './components/loginForm'
 import eventService from './services/events'
 import loginService from './services/login'
@@ -10,6 +10,16 @@ const App = () => {
     const [user, setUser] = useState(null)
     const [errorMessage, setErrorMessage] = useState(null)
     // const [successMessage, setSuccessMessage] = useState(null)
+
+    useEffect(() => {
+        const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+
+        if (loggedUserJSON) {
+            const user = JSON.parse(loggedUserJSON)
+            setUser(user)
+            eventService.setToken(user.token)
+        }
+    }, [])
 
     const handleLogin = async event => {
         event.preventDefault()
@@ -55,6 +65,7 @@ const App = () => {
                 <div>
                     <p>{user.name} is logged.</p>
                     <button onClick={handleLogout}>Logout</button>
+                    <h2>Events</h2>
                 </div>
             )}
         </div>
