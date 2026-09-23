@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "bcrypt": "^6.0.0",
-    "cors": "^2.8.6",
-    "dotenv": "^18.0.3",
-    "sequelize": "^6.37.8",
-    "styled-components": "^6.5.3"
-  }
-}
