@@ -14,12 +14,12 @@ Event.init({
     allowNull: false
   },
   description: {
-    type: DataTypes.text,
+    type: DataTypes.TEXT,
     allowNull: true
   },
   date: {
-    type: DataTypes.date,
-    allowNull: false
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW
   },
   location: {
     type: DataTypes.STRING,
