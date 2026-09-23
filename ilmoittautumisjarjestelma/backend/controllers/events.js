@@ -20,6 +20,22 @@ eventsRouter.post('/', async (request, response, next) => {
   }
 })
 
+eventsRouter.delete('/:id', async (request, response, next) => {
+  try{
+    const id = request.params.id
+    const event = await Event.findByPk(id)
 
+    if(!event){
+      response.status(404).end()
+    }
+    else{
+      await event.destroy()
+      response.status(204).end()
+    }
+
+  }catch(error){
+    next(error)
+  }
+})
 
 module.exports = eventsRouter
