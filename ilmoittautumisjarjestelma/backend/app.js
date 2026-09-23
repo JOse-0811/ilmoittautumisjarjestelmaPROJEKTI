@@ -3,7 +3,7 @@ const cors = require('cors')
 const eventsRouter = require('./controllers/events')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
-const middleware = require('./utils/middlewares')
+const middleware = require('./utils/middleware')
 
 const app = express()
 

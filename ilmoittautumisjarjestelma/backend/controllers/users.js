@@ -27,12 +27,12 @@ usersRouter.post('/', async (request, response) => {
     }
 })
 
-usersRouter.get(':/id', async (request, response) => {
+usersRouter.get('/:id', async (request, response) => {
     const user = await User.findByPk(request.params.id)
     if (user) {
-        res.json(user)
+        response.json(user)
     } else {
-        res.status(404).end()
+        response.status(404).end()
     }
 })
 

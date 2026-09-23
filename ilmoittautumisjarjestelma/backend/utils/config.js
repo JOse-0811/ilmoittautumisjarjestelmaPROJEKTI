@@ -7,4 +7,4 @@ const DATABASE_URL = process.env.NODE_ENV === 'test'
 const SECRET = process.env.SECRET
 
 
-module.exports = { DATABASE_URL, PORT }
+module.exports = { DATABASE_URL, PORT, SECRET }

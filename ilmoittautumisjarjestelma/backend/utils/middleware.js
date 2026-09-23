@@ -1,4 +1,3 @@
-const logger = require('./logger')
 const jwt = require('jsonwebtoken')
 const { User } = require('../models')
 
@@ -9,7 +8,7 @@ const unknownEndpoint = (request, response) => {
 
 // Middleware, joka käsittelee virhetilanteet
 const errorHandler = (error, request, response, next) => {
-    logger.error(error.message)
+    console.log(error.message)
 
     if (error.name === 'SequelizeDatabaseError') {
         return response.status(400).send({ error: 'malformatted id' })

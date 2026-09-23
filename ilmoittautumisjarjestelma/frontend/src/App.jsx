@@ -12,7 +12,7 @@ const App = () => {
     // const [successMessage, setSuccessMessage] = useState(null)
 
     useEffect(() => {
-        const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
+        const loggedUserJSON = window.localStorage.getItem('loggedEventappUser')
 
         if (loggedUserJSON) {
             const user = JSON.parse(loggedUserJSON)
@@ -63,7 +63,7 @@ const App = () => {
             )}
             {user && (
                 <div>
-                    <p>{user.name} is logged.</p>
+                    <p>{user.username} is logged in.</p>
                     <button onClick={handleLogout}>Logout</button>
                     <h2>Events</h2>
                 </div>
