@@ -4,10 +4,16 @@ import eventService from './services/events'
 import EventFrom from './components/eventList'
 import loginService from './services/login'
 import Notification from './components/notifications'
+import RegistrationForm from './components/registrationForm'
+import registrationService from '.services/registration'
 
 const App = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+
     const [events, setEvents] = useState([])
 
     const [user, setUser] = useState(null)
@@ -55,7 +61,20 @@ const App = () => {
         setUser(null)
     }
 
-    
+    const handleRegistration = async event =>{
+        event.preventDefault()
+        // unsure what to continue so this is it for now...
+        try{
+            const regi = await registrationService.register({name,email})
+        } catch(error){
+            console.log(error.response)
+            setErrorMessage('something went wrong')
+            setTimeout(()=>{
+                setErrorMessage(null)
+            }, 5000)
+        }
+
+    }
 
     return (
         <div>
@@ -75,6 +94,15 @@ const App = () => {
                     <button onClick={handleLogout}>Logout</button>
                     
                     <EventFrom events={events}/>
+
+                    <RegistrationForm 
+                    name={name}
+                    email={email}
+                    setName={setName}
+                    setEmail={setEmail}
+                    handleRegistration={handleRegistration}
+                    />
+                
                 </div>
             )}
         </div>
