@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import LoginForm from './components/loginForm'
 import eventService from './services/events'
+import EventFrom from './components/eventList'
 import loginService from './services/login'
 import Notification from './components/notifications'
 import RegistrationForm from './components/registrationForm'
@@ -13,11 +14,16 @@ const App = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
 
+    const [events, setEvents] = useState([])
+
     const [user, setUser] = useState(null)
     const [errorMessage, setErrorMessage] = useState(null)
     // const [successMessage, setSuccessMessage] = useState(null)
 
     useEffect(() => {
+      eventService.getAll().then(events =>
+        setEvents(events)
+      )
         const loggedUserJSON = window.localStorage.getItem('loggedEventappUser')
 
         if (loggedUserJSON) {
@@ -86,7 +92,8 @@ const App = () => {
                 <div>
                     <p>{user.username} is logged in.</p>
                     <button onClick={handleLogout}>Logout</button>
-                    <h2>Events</h2>
+                    
+                    <EventFrom events={events}/>
 
                     <RegistrationForm 
                     name={name}

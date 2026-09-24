@@ -13,11 +13,12 @@ app.use(middleware.tokenExtractor)
 
 app.use('/api/users', usersRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/events', eventsRouter)
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
 
-app.use('/api/events', eventsRouter)
+
 
 app.get('/test', (request, response) => {
   response.send('testi')
