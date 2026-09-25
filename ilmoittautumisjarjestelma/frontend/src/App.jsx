@@ -5,7 +5,7 @@ import EventFrom from './components/eventList'
 import loginService from './services/login'
 import Notification from './components/notifications'
 import RegistrationForm from './components/registrationForm'
-import registrationService from '.services/registration'
+import registrationService from './services/registration'
 
 const App = () => {
     const [username, setUsername] = useState('')
@@ -92,9 +92,9 @@ const App = () => {
                 <div>
                     <p>{user.username} is logged in.</p>
                     <button onClick={handleLogout}>Logout</button>
-                    
+                  <div>
                     <EventFrom events={events}/>
-
+                  
                     <RegistrationForm 
                     name={name}
                     email={email}
@@ -102,7 +102,7 @@ const App = () => {
                     setEmail={setEmail}
                     handleRegistration={handleRegistration}
                     />
-                
+                  </div>  
                 </div>
             )}
         </div>
