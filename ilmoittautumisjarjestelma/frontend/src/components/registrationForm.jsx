@@ -31,4 +31,4 @@ const RegistrationForm = ({
     )
 }
 
-module.export = { RegistrationForm }
+export default RegistrationForm 
