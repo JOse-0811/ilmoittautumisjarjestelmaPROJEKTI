@@ -31,4 +31,4 @@ const RegistrationForm = ({
     )
 }
 
-export default RegistrationForm 
+export default  RegistrationForm

@@ -92,9 +92,9 @@ const App = () => {
                 <div>
                     <p>{user.username} is logged in.</p>
                     <button onClick={handleLogout}>Logout</button>
-                    
+                  <div>
                     <EventFrom events={events}/>
-
+                  
                     <RegistrationForm 
                     name={name}
                     email={email}
@@ -102,7 +102,7 @@ const App = () => {
                     setEmail={setEmail}
                     handleRegistration={handleRegistration}
                     />
-                
+                  </div>  
                 </div>
             )}
         </div>
