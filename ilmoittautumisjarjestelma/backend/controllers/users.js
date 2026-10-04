@@ -20,8 +20,8 @@ usersRouter.post('/', async (request, response) => {
         const user = await User.create({ username, name, passwordHash })
         response.status(201).json(user)
     } catch (error) {
-        if (error.name === 'SequelizeConstraintError') {
-            return response.status(400).json({ error: 'Username must be unique.' })
+        if (error.name === 'SequelizeUniqueConstraintError') {
+    return response.status(400).json({ error: 'Username must be unique.' })
         }
         throw error
     }

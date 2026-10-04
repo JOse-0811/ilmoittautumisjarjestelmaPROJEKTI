@@ -1,3 +1,18 @@
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Link
+} from 'react-router-dom'
+import {
+    AppBar,
+    Toolbar,
+    Typography,
+    Button,
+    Card,
+    CardContent,
+    Box
+} from '@mui/material'
 import { useState, useEffect } from 'react'
 import LoginForm from './components/loginForm'
 import eventService from './services/events'
@@ -6,6 +21,7 @@ import loginService from './services/login'
 import Notification from './components/notifications'
 import RegistrationForm from './components/registrationForm'
 import registrationService from './services/registration'
+import Register from './components/userRegistration'
 
 const App = () => {
     const [username, setUsername] = useState('')
@@ -76,38 +92,119 @@ const App = () => {
 
     }
 
-    return (
-        <div>
-            <Notification message={errorMessage} />
-            {!user && (
-                <LoginForm
-                    username={username}
-                    password={password}
-                    setUsername={setUsername}
-                    setPassword={setPassword}
-                    handleLogin={handleLogin}
-                />
-            )}
-            {user && (
-                <div>
-                    <p>{user.username} is logged in.</p>
-                    <button onClick={handleLogout}>Logout</button>
-                    
-                    <EventFrom events={events}/>
+return (
+    <Router>
+        <AppBar position="static">
+            <Toolbar>
+                <Typography variant="h5" component="h1">
+                    Event App
+                </Typography>
 
-                    <RegistrationForm 
-                    name={name}
-                    email={email}
-                    setName={setName}
-                    setEmail={setEmail}
-                    handleRegistration={handleRegistration}
-                    />
-                
-                </div>
-            )}
-        </div>
-    )
+                <Box sx={{ ml: 'auto', display: 'flex', gap: 2 }}>
+                   {/* jos user ei ole kirjautunut niin näkyy login/register, muuten logout */}
+                   {!user ? (
+                        <>
+                            <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>
+                                Login
+                            </Link>
+                            <Link to="/register" style={{ color: 'white', textDecoration: 'none'  }}>
+                                Register
+                            </Link>
+                        </>
+                    ) : (
+                        <Button onClick={handleLogout} color="inherit">
+                            Logout
+                        </Button>
+                    )}
+                </Box>
+            </Toolbar>
+        </AppBar>
 
+        <Notification message={errorMessage} />
+
+        <Routes>
+            <Route
+                path="/"
+                element={
+                    user ? (
+                        <Box sx={{ maxWidth: 800, mx: 'auto', my: 4, px: 2 }}>
+                            <Typography variant="h5" gutterBottom>
+                                {user.username} is logged in.
+                            </Typography>
+                            <EventFrom events={events} />
+                            <Card sx={{ mt: 4, borderRadius: 3, boxShadow: 2 }}>
+                                <CardContent>
+                                    <RegistrationForm
+                                        name={name}
+                                        email={email}
+                                        setName={setName}
+                                        setEmail={setEmail}
+                                        handleRegistration={handleRegistration}
+                                    />
+                                </CardContent>
+                            </Card>
+                        </Box>
+                    ) : (
+                        <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>
+                            <CardContent>
+                                <LoginForm
+                                    username={username}
+                                    password={password}
+                                    setUsername={setUsername}
+                                    setPassword={setPassword}
+                                    handleLogin={handleLogin}
+                                />
+                            </CardContent>
+                        </Card>
+                    )
+                }
+            />
+
+            <Route
+                path="/login"
+                element={
+                    <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>
+                        <CardContent>
+                            {user ? (
+                                <Typography variant="h5">
+                                    {user.username} is logged in.
+                                </Typography>
+                            ) : (
+                                <LoginForm
+                                    username={username}
+                                    password={password}
+                                    setUsername={setUsername}
+                                    setPassword={setPassword}
+                                    handleLogin={handleLogin}
+                                />
+                            )}
+                        </CardContent>
+                    </Card>
+                }
+            />
+
+            <Route
+                path="/register"
+                element={
+                    user ? (
+                        <Box sx={{ maxWidth: 800, mx: 'auto', my: 4, px: 2 }}>
+                            <Typography variant="h5" gutterBottom>
+                                {user.username} is logged in.
+                            </Typography>
+                            <EventFrom events={events} />
+                        </Box>
+                    ) : (
+                        <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>
+                            <CardContent>
+                                <Register />
+                            </CardContent>
+                        </Card>
+                    )
+                }
+            />
+        </Routes>
+    </Router>
+)
 }
 
 export default App

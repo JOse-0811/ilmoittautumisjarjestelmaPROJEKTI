@@ -8,6 +8,7 @@ const LoginForm = ({
     return (
         <form onSubmit={handleLogin}>
             <div>
+                <h2>Login</h2>
                 <label>
                     username
                     <input type="text"
