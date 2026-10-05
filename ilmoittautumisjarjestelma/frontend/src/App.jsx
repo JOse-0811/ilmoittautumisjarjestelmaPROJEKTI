@@ -3,7 +3,7 @@ import LoginForm from './components/loginForm'
 import eventService from './services/events'
 import loginService from './services/login'
 import Notification from './components/notifications'
-import RegistrationForm from './components/registrationForm'
+import EventRegistrationForm from './components/eventRegistrationForm'
 import registrationService from '.services/registration'
 
 const App = () => {
@@ -88,7 +88,7 @@ const App = () => {
                     <button onClick={handleLogout}>Logout</button>
                     <h2>Events</h2>
 
-                    <RegistrationForm 
+                    <EventRegistrationForm 
                     name={name}
                     email={email}
                     setName={setName}
