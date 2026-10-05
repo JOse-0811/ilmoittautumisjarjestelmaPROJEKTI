@@ -168,9 +168,7 @@ const App = () => {
               <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>
                 <CardContent>
                   {user ? (
-                    <h3>
-                        {user.username} is logged in.
-                    </h3>
+                    <h3>{user.username} is logged in.</h3>
                   ) : (
                     <LoginForm
                       username={username}
@@ -182,7 +180,7 @@ const App = () => {
                   )}
                 </CardContent>
               </Card>
-              <EventForm events={events} />
+              {user && <EventForm events={events} />}
             </Box>
           }
         />
@@ -207,7 +205,7 @@ const App = () => {
           }
         />
       </Routes>
-    </Router>
+    </Router >
   )
 }
 
