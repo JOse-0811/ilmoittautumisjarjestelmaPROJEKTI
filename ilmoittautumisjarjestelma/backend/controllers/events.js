@@ -12,9 +12,21 @@ eventsRouter.get('/', async (request, response, next) => {
 
 eventsRouter.post('/', async (request, response, next) => {
   try{
-    console.log(request.body)
-    const result = await Event.create(request.body)
-    response.json(result)
+    console.log('vastaan otettu date',request.body)
+
+    const { name, description, location, date } = request.body
+
+    if(!date) {
+      return response.status(400).json({ error: 'date is required' })
+    }
+
+    const result = await Event.create({
+      name,
+      description,
+      location,
+      date: new Date(date)
+    })
+    response.status(201).json(result)
   }catch(error){
     next(error)
   }
