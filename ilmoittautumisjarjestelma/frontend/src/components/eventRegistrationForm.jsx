@@ -1,4 +1,5 @@
-const EventRegistrationForm = ({
+const EventRegistrationForm = (
+    {
     name,
     email,
     handleRegistration,
