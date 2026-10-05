@@ -20,7 +20,8 @@ import EventForm from './components/eventList'
 import loginService from './services/login'
 import Notification from './components/notifications'
 import EventRegistrationForm from './components/eventRegistrationForm'
-import registrationService from '.services/registration'
+import registrationService from './services/registration'
+import Register from './components/userRegistration'
 
 const App = () => {
   const [username, setUsername] = useState('')
