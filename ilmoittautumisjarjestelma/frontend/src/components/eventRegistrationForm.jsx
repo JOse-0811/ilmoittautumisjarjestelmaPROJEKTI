@@ -1,4 +1,5 @@
-const RegistrationForm = ({
+const EventRegistrationForm = (
+    {
     name,
     email,
     handleRegistration,
@@ -31,4 +32,4 @@ const RegistrationForm = ({
     )
 }
 
-export default  RegistrationForm
+export default  EventRegistrationForm
