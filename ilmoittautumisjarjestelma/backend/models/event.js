@@ -19,7 +19,7 @@ Event.init({
   },
   date: {
     type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW
+    allowNull: false
   },
   location: {
     type: DataTypes.STRING,
