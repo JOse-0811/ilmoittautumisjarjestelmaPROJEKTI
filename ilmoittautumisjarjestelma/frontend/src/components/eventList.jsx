@@ -1,4 +1,4 @@
-const EventFrom = ({events}) => {
+const EventForm = ({events}) => {
 return(
 <>
 <h2>Events</h2>
@@ -7,4 +7,4 @@ return(
 </div></>
 )}
 
-export default EventFrom
+export default EventForm
