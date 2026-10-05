@@ -2,7 +2,7 @@ POST http://localhost:3001/api/events
 Content-Type: application/json
 
 {
-    "name": "test",
-    "description": "test",
-    "location": "test"
+    "name": "juu",
+    "description": "nii",
+    "location": "ööö"
 }

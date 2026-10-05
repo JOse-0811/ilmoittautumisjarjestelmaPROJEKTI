@@ -3,6 +3,6 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImVtaWxpYSIsImlkIjo3LCJpYXQiOjE3ODk5Nzg1MTAsImV4cCI6MTc4OTk4MjExMH0.XxjzfkMdupeWUx6nKiKfVlNvGMQ-jTcesHC7uf7njcQ
 
 {
-	"username": "emilia",
-	"password": "test123"
+	"username": "tester1",
+	"password": "test"
 }
