@@ -134,7 +134,7 @@ const App = () => {
                 <EventForm events={events} />
                 <Card sx={{ mt: 4, borderRadius: 3, boxShadow: 2 }}>
                   <CardContent>
-                    <RegistrationForm
+                    <EventRegistrationForm
                       name={name}
                       email={email}
                       setName={setName}
