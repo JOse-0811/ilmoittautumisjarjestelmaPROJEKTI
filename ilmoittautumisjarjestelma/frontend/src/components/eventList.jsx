@@ -5,6 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import PersonIcon from '@mui/icons-material/Person';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from '@mui/material';
@@ -21,7 +22,7 @@ const EventRow = ({ event }) => {
       <TableCell align="right">{date.getDate()}.{date.getMonth()}.{date.getFullYear()}</TableCell>
       <TableCell align="right">{date.getHours()}.{date.getMinutes()}</TableCell>
       <TableCell align="right">{event.location}</TableCell>
-      <TableCell align="right"></TableCell>
+      <TableCell align="right"><PersonIcon/>{event.registrationCount}</TableCell>
       <TableCell align="right"><Button><AssignmentIcon/></Button></TableCell>
       <TableCell align="right"><Button><DeleteIcon/></Button></TableCell>
     </TableRow>
