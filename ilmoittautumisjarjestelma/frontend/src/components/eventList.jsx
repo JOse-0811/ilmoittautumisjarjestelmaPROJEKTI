@@ -6,6 +6,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from '@mui/material';
 
 const EventRow = ({ event }) => {
@@ -22,6 +23,7 @@ const EventRow = ({ event }) => {
       <TableCell align="right">{event.location}</TableCell>
       <TableCell align="right"></TableCell>
       <TableCell align="right"><Button><AssignmentIcon/></Button></TableCell>
+      <TableCell align="right"><Button><DeleteIcon/></Button></TableCell>
     </TableRow>
   )
 }
@@ -42,6 +44,7 @@ const EventList = ({ events }) => {
             <TableCell align="right">Location</TableCell>
             <TableCell align="right">Osallisujien määrä</TableCell>
             <TableCell align="right">Ilmotaudu</TableCell>
+            <TableCell align="right">Delete</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
