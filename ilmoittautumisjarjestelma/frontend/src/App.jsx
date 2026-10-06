@@ -10,24 +10,19 @@ import {
   Box
 } from '@mui/material'
 import { useState, useEffect } from 'react'
-import LoginForm from './components/loginForm'
 import eventService from './services/events'
-import EventList from './components/eventList'
-import loginService from './services/login'
 import Notification from './components/notifications'
-import EventRegistrationForm from './components/eventRegistrationForm'
 import registrationService from './services/registration'
 import Register from './components/userRegistration'
 import NavigationBar from './components/navigationBar'
+import Home from './pages/home'
 
 const App = () => {
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
-  const [events, setEvents] = useState([])
+
 
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -40,34 +35,10 @@ const App = () => {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
       eventService.setToken(user.token)
-
-      eventService.getAll().then(events => setEvents(events))
     }
   }, [])
 
-  const handleLogin = async event => {
-    event.preventDefault()
 
-    try {
-      const user = await loginService.login({ username, password })
-      window.localStorage.setItem(
-        'loggedEventappUser',
-        JSON.stringify(user)
-      )
-      eventService.setToken(user.token)
-      setUser(user)
-      const events = await eventService.getAll()
-      setEvents(events)
-      setUsername('')
-      setPassword('')
-    } catch (error) {
-      console.log(error.response)
-      setErrorMessage('wrong credentials')
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 5000)
-    }
-  }
 
   const handleLogout = () => {
     window.localStorage.removeItem('loggedEventappUser')
@@ -92,7 +63,7 @@ const App = () => {
 
   return (
     <Router>
-      <NavigationBar user={user} handleLogout={handleLogout}/>
+      <NavigationBar user={user} handleLogout={handleLogout} />
 
       <Notification message={errorMessage} />
 
@@ -100,37 +71,7 @@ const App = () => {
         <Route
           path="/"
           element={
-            user ? (
-              <Box sx={{ maxWidth: 800, mx: 'auto', my: 4, px: 2 }}>
-                <Typography variant="h5">
-                  {user.username} is logged in.
-                </Typography>
-                <EventList events={events} />
-                <Card sx={{ mt: 4, borderRadius: 3, boxShadow: 2 }}>
-                  <CardContent>
-                    <EventRegistrationForm
-                      name={name}
-                      email={email}
-                      setName={setName}
-                      setEmail={setEmail}
-                      handleRegistration={handleRegistration}
-                    />
-                  </CardContent>
-                </Card>
-              </Box>
-            ) : (
-              <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>
-                <CardContent>
-                  <LoginForm
-                    username={username}
-                    password={password}
-                    setUsername={setUsername}
-                    setPassword={setPassword}
-                    handleLogin={handleLogin}
-                  />
-                </CardContent>
-              </Card>
-            )
+            <Home user={user} setUser={setUser} setErrorMessage={setErrorMessage} />
           }
         />
 
@@ -142,7 +83,6 @@ const App = () => {
                 <Typography variant="h5">
                   {user.username} is logged in.
                 </Typography>
-                <EventList events={events} />
               </Box>
             ) : (
               <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>
