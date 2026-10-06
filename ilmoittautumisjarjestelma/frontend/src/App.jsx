@@ -2,13 +2,9 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from 'react-router-dom'
 import {
-  AppBar,
-  Toolbar,
   Typography,
-  Button,
   Card,
   CardContent,
   Box
@@ -22,6 +18,7 @@ import Notification from './components/notifications'
 import EventRegistrationForm from './components/eventRegistrationForm'
 import registrationService from './services/registration'
 import Register from './components/userRegistration'
+import NavigationBar from './components/navigationBar'
 
 const App = () => {
   const [username, setUsername] = useState('')
@@ -95,31 +92,7 @@ const App = () => {
 
   return (
     <Router>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h5" component="h1">
-            Event App
-          </Typography>
-
-          <Box sx={{ ml: 'auto', display: 'flex', gap: 2 }}>
-            {/* jos user ei ole kirjautunut niin näkyy login/register, muuten logout */}
-            {!user ? (
-              <>
-                <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
-                  Login
-                </Link>
-                <Link to="/register" style={{ color: 'white', textDecoration: 'none' }}>
-                  Register
-                </Link>
-              </>
-            ) : (
-              <Button onClick={handleLogout} color="inherit">
-                Logout
-              </Button>
-            )}
-          </Box>
-        </Toolbar>
-      </AppBar>
+      <NavigationBar user={user} handleLogout={handleLogout}/>
 
       <Notification message={errorMessage} />
 
