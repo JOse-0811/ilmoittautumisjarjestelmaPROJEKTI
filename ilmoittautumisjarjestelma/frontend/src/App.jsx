@@ -21,7 +21,7 @@ import loginService from './services/login'
 import Notification from './components/notifications'
 import EventRegistrationForm from './components/eventRegistrationForm'
 import registrationService from './services/registration'
-import Register from './components/userRegistration'
+import Register from './components/userRegForm'
 
 const App = () => {
   const [username, setUsername] = useState('')
@@ -34,7 +34,7 @@ const App = () => {
 
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
-  // const [successMessage, setSuccessMessage] = useState(null)
+  const [successMessage, setSuccessMessage] = useState(null)
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedEventappUser')
@@ -122,7 +122,7 @@ const App = () => {
       </AppBar>
 
       <Notification message={errorMessage} />
-
+      {/*Jostain syystä meil menee joskus routeen / ja joskus jää /login kun on kirjautunu???*/}
       <Routes>
         <Route
           path="/"
@@ -132,7 +132,12 @@ const App = () => {
                 <Typography variant="h5">
                   {user.username} is logged in.
                 </Typography>
-                <EventList events={events} />
+                <EventList
+                  events={events}
+                  setEvents={setEvents}
+                  setSuccessMessage={setSuccessMessage}
+                  setErrorMessage={setErrorMessage}
+                />
                 <Card sx={{ mt: 4, borderRadius: 3, boxShadow: 2 }}>
                   <CardContent>
                     <EventRegistrationForm
@@ -180,7 +185,12 @@ const App = () => {
                   )}
                 </CardContent>
               </Card>
-              {user && <EventList events={events} />}
+              {user && <EventList
+                  events={events}
+                  setEvents={setEvents}
+                  setSuccessMessage={setSuccessMessage}
+                  setErrorMessage={setErrorMessage}
+                />}
             </Box>
           }
         />
@@ -193,7 +203,12 @@ const App = () => {
                 <Typography variant="h5">
                   {user.username} is logged in.
                 </Typography>
-                <EventList events={events} />
+                <EventList
+                  events={events}
+                  setEvents={setEvents}
+                  setSuccessMessage={setSuccessMessage}
+                  setErrorMessage={setErrorMessage}
+                />
               </Box>
             ) : (
               <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>
