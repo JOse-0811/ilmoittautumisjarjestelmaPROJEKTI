@@ -1,12 +1,12 @@
 const User = require('./user')
 const Event = require('./event')
-const Registrations = require('./registrations')
+const Registration = require('./registration')
 
-Event.hasMany(Registrations)
-Registrations.belongsTo(Event)
+Event.hasMany(Registration)
+Registration.belongsTo(Event)
 
 User.sync({alter: true})
 Event.sync({alter: true})
-Registrations.sync({alter: true})
+Registration.sync({alter: true})
 
-module.exports = {User, Event, Registrations}
+module.exports = {User, Event, Registration}

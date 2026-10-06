@@ -1,10 +1,10 @@
 const registrationRouter = require('express').Router()
-const {Registrations} = require('../models/index')
+const {Registration} = require('../models/index')
 
 registrationRouter.get('/', async (request, response, next) => {
     try{
-        const registrations = await Registrations.findAll()
-        response.json(registrations)
+        const Registration = await Registration.findAll()
+        response.json(Registration)
         
     } catch(error){
         next(error)
@@ -14,7 +14,7 @@ registrationRouter.get('/', async (request, response, next) => {
 registrationRouter.post('/', async (request,response,next)=>{
     try{
         console.log(request.body)
-        const result = await Registrations.create(request.body)
+        const result = await Registration.create(request.body)
         response.json(result)
     } catch(error){
         next(error)
@@ -24,7 +24,7 @@ registrationRouter.post('/', async (request,response,next)=>{
 registrationRouter.delete('/:id', async (request,response,next)=>{
     try{
         const id = request.params.id
-        const registration = await Registrations.findByPk(id)
+        const registration = await Registration.findByPk(id)
 
         if(!registration){
             response.status(404).end()
