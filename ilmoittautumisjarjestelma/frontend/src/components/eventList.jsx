@@ -37,14 +37,13 @@ const EventList = ({ events }) => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>nimi</TableCell>
-            <TableCell align="right">description</TableCell>
+            <TableCell>Name</TableCell>
+            <TableCell align="right">Description</TableCell>
             <TableCell align="right">Date</TableCell>
             <TableCell align="right">Time</TableCell>
             <TableCell align="right">Location</TableCell>
-            <TableCell align="right">Osallisujien määrä</TableCell>
-            <TableCell align="right">Ilmotaudu</TableCell>
-            <TableCell align="right">Delete</TableCell>
+            <TableCell align="right">Amount of participants</TableCell>
+            <TableCell align="right">Sign up</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
