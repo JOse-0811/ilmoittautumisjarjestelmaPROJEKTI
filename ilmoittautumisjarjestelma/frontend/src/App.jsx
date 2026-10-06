@@ -105,7 +105,7 @@ const App = () => {
             {/* jos user ei ole kirjautunut niin näkyy login/register, muuten logout */}
             {!user ? (
               <>
-                <Link to="/login" style={{ color: 'white', textDecoration: 'none' }}>
+                <Link to="/" style={{ color: 'white', textDecoration: 'none' }}>
                   Login
                 </Link>
                 <Link to="/register" style={{ color: 'white', textDecoration: 'none' }}>
@@ -158,30 +158,6 @@ const App = () => {
                 </CardContent>
               </Card>
             )
-          }
-        />
-
-        <Route
-          path="/login"
-          element={
-            <Box sx={{ maxWidth: 800, mx: 'auto', my: 4, px: 2 }}>
-              <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>
-                <CardContent>
-                  {user ? (
-                    <h3>{user.username} is logged in.</h3>
-                  ) : (
-                    <LoginForm
-                      username={username}
-                      password={password}
-                      setUsername={setUsername}
-                      setPassword={setPassword}
-                      handleLogin={handleLogin}
-                    />
-                  )}
-                </CardContent>
-              </Card>
-              {user && <EventList events={events} />}
-            </Box>
           }
         />
 

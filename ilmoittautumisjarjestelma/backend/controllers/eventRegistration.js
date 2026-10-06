@@ -14,6 +14,7 @@ registrationRouter.get('/', async (request, response, next) => {
 registrationRouter.post('/', async (request,response,next)=>{
     try{
         console.log(request.body)
+        
         const result = await Registration.create(request.body)
         response.json(result)
     } catch(error){
