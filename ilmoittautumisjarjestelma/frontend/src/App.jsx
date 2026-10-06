@@ -16,7 +16,7 @@ import {
 import { useState, useEffect } from 'react'
 import LoginForm from './components/loginForm'
 import eventService from './services/events'
-import EventForm from './components/eventList'
+import EventList from './components/eventList'
 import loginService from './services/login'
 import Notification from './components/notifications'
 import EventRegistrationForm from './components/eventRegistrationForm'
@@ -132,7 +132,7 @@ const App = () => {
                 <Typography variant="h5">
                   {user.username} is logged in.
                 </Typography>
-                <EventForm events={events} />
+                <EventList events={events} />
                 <Card sx={{ mt: 4, borderRadius: 3, boxShadow: 2 }}>
                   <CardContent>
                     <EventRegistrationForm
@@ -180,7 +180,7 @@ const App = () => {
                   )}
                 </CardContent>
               </Card>
-              {user && <EventForm events={events} />}
+              {user && <EventList events={events} />}
             </Box>
           }
         />
@@ -193,7 +193,7 @@ const App = () => {
                 <Typography variant="h5">
                   {user.username} is logged in.
                 </Typography>
-                <EventForm events={events} />
+                <EventList events={events} />
               </Box>
             ) : (
               <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>

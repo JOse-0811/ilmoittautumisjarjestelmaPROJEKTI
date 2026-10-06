@@ -2,8 +2,8 @@ POST http://localhost:3001/api/events
 Content-Type: application/json
 
 {
-    "name": "tylsää",
-    "description": "entiiä",
-    "location": "Helsinki",
-    "date": "2027-11-15T20:00:00"
+    "name": "juoksu",
+    "description": "nooo",
+    "location": "espoo",
+    "date": "2026-10-30T18:30"
 }
