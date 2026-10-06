@@ -12,17 +12,11 @@ import {
 import { useState, useEffect } from 'react'
 import eventService from './services/events'
 import Notification from './components/notifications'
-import registrationService from './services/registration'
 import Register from './components/userRegistration'
 import NavigationBar from './components/navigationBar'
 import Home from './pages/home'
 
 const App = () => {
-
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-
-
 
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -44,21 +38,6 @@ const App = () => {
     window.localStorage.removeItem('loggedEventappUser')
     eventService.setToken(null)
     setUser(null)
-  }
-
-  const handleRegistration = async event => {
-    event.preventDefault()
-    // unsure what to continue so this is it for now...
-    try {
-      const regi = await registrationService.register({ name, email })
-    } catch (error) {
-      console.log(error.response)
-      setErrorMessage('something went wrong')
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 5000)
-    }
-
   }
 
   return (
