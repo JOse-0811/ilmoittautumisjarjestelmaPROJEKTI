@@ -15,6 +15,7 @@ import Notification from './components/notifications'
 import Register from './components/userRegForm'
 import NavigationBar from './components/navigationBar'
 import Home from './pages/home'
+import EventCreation from './pages/EventCreation'
 
 const App = () => {
 
@@ -45,12 +46,18 @@ const App = () => {
       <NavigationBar user={user} handleLogout={handleLogout} />
 
       <Notification message={errorMessage} />
-      <Notification message={successMessage} />
+      {/*Jostain syystä meil menee joskus routeen / ja joskus jää /login kun on kirjautunu???*/}
       <Routes>
         <Route
           path="/"
           element={
             <Home user={user} setUser={setUser} setErrorMessage={setErrorMessage} setSuccessMessage={setSuccessMessage}/>
+          }
+        />
+        <Route
+          path="/createEvent"
+          element={
+            <EventCreation/>
           }
         />
 

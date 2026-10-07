@@ -1,7 +1,5 @@
 const eventsRouter = require('express').Router()
-const jwt = require('jsonwebtoken')
-const { Event, Registration, User } = require('../models/index')
-const { SECRET } = require('../utils/config')
+const { Event } = require('../models/index')
 const { sequelize } = require('../utils/db')
 const { QueryTypes } = require('sequelize')
 
