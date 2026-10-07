@@ -27,7 +27,7 @@ const Home = ({ user, setUser, setErrorMessage, setSuccessMessage }) => {
         <Typography variant="h5">
           {user.username} is logged in.
         </Typography>
-        <EventList events={events} setErrorMessage={setErrorMessage} setSuccessMessage={setSuccessMessage}/>
+        <EventList events={events} setEvents={setEvents} setErrorMessage={setErrorMessage} setSuccessMessage={setSuccessMessage}/>
       </Box>
     ) : (
       <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>

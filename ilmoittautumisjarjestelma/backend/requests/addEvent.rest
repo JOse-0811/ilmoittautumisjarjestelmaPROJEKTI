@@ -1,6 +1,6 @@
 POST http://localhost:3001/api/events
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjY2NiIsImlkIjozLCJpYXQiOjE3OTEyODE4MDcsImV4cCI6MTc5MTI4NTQwN30.Vxdr1xtoJBFlru4hepCaVeHoxxQfFnBt0f9_KrrP0EY.eyJ1c2VybmFtZSI6InRlc3RlcjEiLCJpZCI6MSwiaWF0IjoxNzkxMjgxNzUzLCJleHAiOjE3OTEyODUzNTN9.QvIwnTC4QbGWAyoxGpra5RAt256vArh4qQ14vbfKMEU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjY2NiIsImlkIjozLCJpYXQiOjE3OTEzNjIwMzYsImV4cCI6MTc5MTM2NTYzNn0.-LKlLBhV-6n6Q14p91jiagWIQaX4vT34r-AUNs7oVas
 
 {
   "name": "Test Event",
