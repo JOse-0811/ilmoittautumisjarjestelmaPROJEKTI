@@ -9,7 +9,7 @@ import {
   Box
 } from '@mui/material'
 
-const Home = ({ user, setUser, setErrorMessage }) => {
+const Home = ({ user, setUser, setErrorMessage, setSuccessMessage }) => {
 
 
   const [events, setEvents] = useState([])
@@ -27,7 +27,7 @@ const Home = ({ user, setUser, setErrorMessage }) => {
         <Typography variant="h5">
           {user.username} is logged in.
         </Typography>
-        <EventList events={events} />
+        <EventList events={events} setErrorMessage={setErrorMessage} setSuccessMessage={setSuccessMessage}/>
       </Box>
     ) : (
       <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>

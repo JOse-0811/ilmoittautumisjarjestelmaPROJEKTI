@@ -1,5 +1,17 @@
 const eventsRouter = require('express').Router()
-const { Event, Registration } = require('../models/index')
+const jwt = require('jsonwebtoken')
+const {  Event , Registration } = require('../models/index')
+const { SECRET } = require('../utils/config')
+
+const getTokenFrom = request => {
+  const authorization = request.get('authorization')
+
+  if (authorization && authorization.startsWith('Bearer ')) {
+    return authorization.replace('Bearer ', '')
+  }
+
+  return null
+}
 const { sequelize } = require('../utils/db')
 const { QueryTypes } = require('sequelize')
 
@@ -24,8 +36,6 @@ eventsRouter.get('/', async (request, response, next) => {
 
 eventsRouter.post('/', async (request, response, next) => {
   try {
-    console.log('vastaan otettu date', request.body)
-
     const { name, description, location, date } = request.body
 
     if (!date) {
@@ -38,6 +48,7 @@ eventsRouter.post('/', async (request, response, next) => {
       location,
       date: new Date(date)
     })
+
     response.status(201).json(result)
   } catch (error) {
     next(error)
@@ -46,17 +57,40 @@ eventsRouter.post('/', async (request, response, next) => {
 
 eventsRouter.delete('/:id', async (request, response, next) => {
   try {
-    const id = request.params.id
-    const event = await Event.findByPk(id)
+    const token = getTokenFrom(request)
+
+    if (!token) {
+      return response.status(401).json({
+        error: 'token missing or invalid'
+      })
+    }
+
+    let decodedToken
+
+    try {
+      decodedToken = jwt.verify(token, SECRET)
+    } catch (error) {
+      return response.status(401).json({
+        error: 'token missing or invalid'
+      })
+    }
+
+    const event = await Event.findByPk(request.params.id)
 
     if (!event) {
-      response.status(404).end()
-    }
-    else {
-      await event.destroy()
-      response.status(204).end()
+      return response.status(404).json({
+        error: 'event not found'
+      })
     }
 
+    if (event.userId !== decodedToken.id) {
+      return response.status(403).json({
+        error: 'Only the creator or admin can delete the event.'
+      })
+    }
+
+    await event.destroy()
+    return response.status(204).end()
   } catch (error) {
     next(error)
   }

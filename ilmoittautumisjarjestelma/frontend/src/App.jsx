@@ -12,7 +12,7 @@ import {
 import { useState, useEffect } from 'react'
 import eventService from './services/events'
 import Notification from './components/notifications'
-import Register from './components/userRegistration'
+import Register from './components/userRegForm'
 import NavigationBar from './components/navigationBar'
 import Home from './pages/home'
 
@@ -20,7 +20,7 @@ const App = () => {
 
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
-  // const [successMessage, setSuccessMessage] = useState(null)
+  const [successMessage, setSuccessMessage] = useState(null)
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedEventappUser')
@@ -45,12 +45,12 @@ const App = () => {
       <NavigationBar user={user} handleLogout={handleLogout} />
 
       <Notification message={errorMessage} />
-
+      {/*Jostain syystä meil menee joskus routeen / ja joskus jää /login kun on kirjautunu???*/}
       <Routes>
         <Route
           path="/"
           element={
-            <Home user={user} setUser={setUser} setErrorMessage={setErrorMessage} />
+            <Home user={user} setUser={setUser} setErrorMessage={setErrorMessage} setSuccessMessage={setSuccessMessage}/>
           }
         />
 
