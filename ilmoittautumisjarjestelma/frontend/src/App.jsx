@@ -45,7 +45,7 @@ const App = () => {
       <NavigationBar user={user} handleLogout={handleLogout} />
 
       <Notification message={errorMessage} />
-      {/*Jostain syystä meil menee joskus routeen / ja joskus jää /login kun on kirjautunu???*/}
+      <Notification message={successMessage} />
       <Routes>
         <Route
           path="/"
