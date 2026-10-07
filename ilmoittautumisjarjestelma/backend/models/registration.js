@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize')
 const {sequelize} = require('../utils/db')
 
-class Registrations extends Model {}
+class Registration extends Model {}
 
-Registrations.init({
+Registration.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -17,15 +17,11 @@ Registrations.init({
     type: DataTypes.STRING,
     allowNull: false
   },
-  eventld: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-}, {
+ }, {
   sequelize,
   underscored: true,
   timestamps: false,
-  modelName: 'registrations'
+  modelName: 'Registration'
 })
 
-module.exports = Registrations
+module.exports = Registration

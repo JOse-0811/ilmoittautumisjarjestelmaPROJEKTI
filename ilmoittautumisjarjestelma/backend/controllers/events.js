@@ -1,6 +1,6 @@
 const eventsRouter = require('express').Router()
 const jwt = require('jsonwebtoken')
-const { Event } = require('../models/index')
+const {  Event , Registration } = require('../models/index')
 const { SECRET } = require('../utils/config')
 
 const getTokenFrom = request => {
@@ -12,10 +12,22 @@ const getTokenFrom = request => {
 
   return null
 }
+const { sequelize } = require('../utils/db')
+const { QueryTypes } = require('sequelize')
 
 eventsRouter.get('/', async (request, response, next) => {
   try {
-    const events = await Event.findAll()
+    const events = await sequelize.query(`
+      SELECT
+          e.*,
+          COUNT(r.id) AS "registrationCount"
+      FROM "events" e
+      LEFT JOIN "registrations" r
+          ON r."event_id" = e.id
+      GROUP BY e.id
+      `, {
+        type: QueryTypes.SELECT
+      });
     response.json(events)
   } catch (error) {
     next(error)

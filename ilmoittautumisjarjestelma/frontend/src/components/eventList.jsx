@@ -5,6 +5,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
+import PersonIcon from '@mui/icons-material/Person';
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { Button } from '@mui/material'
@@ -62,9 +63,7 @@ const EventRow = ({
         {date.getHours()}.{String(date.getMinutes()).padStart(2, '0')}
       </TableCell>
       <TableCell align="right">{event.location}</TableCell>
-      <TableCell align="right">
-        {event.participants?.length ?? 0}
-      </TableCell>
+       <TableCell align="right"><PersonIcon/>{event.registrationCount}</TableCell>
       <TableCell align="right">
         <Button><AssignmentIcon /></Button>
       </TableCell>
