@@ -28,7 +28,10 @@ const EventRow = ({
     try {
       await eventService.remove(event.id)
       setEvents(events.filter(e => e.id !== event.id))
-      setSuccessMessage('Event deleted successfully')
+      setSuccessMessage({
+        text: 'Event deleted successfully',
+        type: 'success'
+      })
 
       setTimeout(() => {
         setSuccessMessage(null)
@@ -41,7 +44,10 @@ const EventRow = ({
       setErrorMessage(
         error.response?.data?.error ||
         error.message ||
-        'Failed to delete event'
+        {
+          text: 'Failed to delete event',
+          type: 'error'
+        }
       )
 
       setTimeout(() => {
@@ -63,7 +69,7 @@ const EventRow = ({
         {date.getHours()}.{String(date.getMinutes()).padStart(2, '0')}
       </TableCell>
       <TableCell align="right">{event.location}</TableCell>
-       <TableCell align="right"><PersonIcon/>{event.registrationCount}</TableCell>
+      <TableCell align="right"><PersonIcon />{event.registrationCount}</TableCell>
       <TableCell align="right">
         <Button><AssignmentIcon /></Button>
       </TableCell>
