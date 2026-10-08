@@ -15,6 +15,7 @@ import Notification from './components/notifications'
 import Register from './components/userRegForm'
 import NavigationBar from './components/navigationBar'
 import Home from './pages/home'
+import EventCreation from './pages/EventCreation'
 
 const App = () => {
 
@@ -51,6 +52,18 @@ const App = () => {
           path="/"
           element={
             <Home user={user} setUser={setUser} setErrorMessage={setErrorMessage} setSuccessMessage={setSuccessMessage} />
+          }
+        />
+        <Route
+          path="/createEvent"
+          element={
+            <EventCreation setErrorMessage={setErrorMessage}/>
+          }
+        />
+        <Route
+          path="/createEvent"
+          element={
+            <EventCreation setErrorMessage={setErrorMessage}/>
           }
         />
 

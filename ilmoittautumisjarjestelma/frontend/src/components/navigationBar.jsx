@@ -29,9 +29,19 @@ const NavigationBar = ({user, handleLogout}) => {
                 </Link>
               </>
             ) : (
-              <Button onClick={handleLogout} color="inherit">
-                Logout
-              </Button>
+              <>
+                <Button component={Link}  to="/" style={{color: 'white', textDecoration: 'none'}}>
+                  Home
+                </Button>
+
+                <Button component={Link} to="/createEvent" style={{color: 'white', textDecoration: 'none'}}>
+                  Create event
+                </Button> 
+                
+                <Button onClick={handleLogout} color="inherit">
+                  Logout
+                </Button>
+              </>
             )}
           </Box>
         </Toolbar>
