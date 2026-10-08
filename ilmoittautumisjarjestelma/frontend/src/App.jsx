@@ -44,13 +44,13 @@ const App = () => {
     <Router>
       <NavigationBar user={user} handleLogout={handleLogout} />
 
-      <Notification message={errorMessage} />
-      <Notification message={successMessage} />
+      <Notification message={successMessage || errorMessage} />
+
       <Routes>
         <Route
           path="/"
           element={
-            <Home user={user} setUser={setUser} setErrorMessage={setErrorMessage} setSuccessMessage={setSuccessMessage}/>
+            <Home user={user} setUser={setUser} setErrorMessage={setErrorMessage} setSuccessMessage={setSuccessMessage} />
           }
         />
 
@@ -66,7 +66,10 @@ const App = () => {
             ) : (
               <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>
                 <CardContent>
-                  <Register />
+                  <Register
+                    setErrorMessage={setErrorMessage}
+                    setSuccessMessage={setSuccessMessage}
+                  />
                 </CardContent>
               </Card>
             )
