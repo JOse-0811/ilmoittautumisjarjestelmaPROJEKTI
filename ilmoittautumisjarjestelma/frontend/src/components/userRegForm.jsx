@@ -1,3 +1,4 @@
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import userService from '../services/users'
 
@@ -6,6 +7,7 @@ const RegisterUser = ({ setErrorMessage, setSuccessMessage }) => {
   const [name, setName] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
 
   const handleSubmitUser = async event => {
     event.preventDefault()
@@ -62,6 +64,7 @@ const RegisterUser = ({ setErrorMessage, setSuccessMessage }) => {
       setName('')
       setUsername('')
       setPassword('')
+      navigate('/')
     } catch (error) {
       console.log(error.response)
 
