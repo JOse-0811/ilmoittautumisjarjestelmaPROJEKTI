@@ -1,7 +1,9 @@
 const eventsRouter = require('express').Router()
-const { Event } = require('../models/index')
+const { Event, User } = require('../models/index')
 const { sequelize } = require('../utils/db')
 const { QueryTypes } = require('sequelize')
+const jwt = require('jsonwebtoken')
+const {SECRET} = require('../utils/config')
 
 const getTokenFrom = request => {
   const authorization = request.get('authorization')

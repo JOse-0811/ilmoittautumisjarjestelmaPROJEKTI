@@ -57,7 +57,7 @@ const App = () => {
         <Route
           path="/createEvent"
           element={
-            <EventCreation/>
+            <EventCreation setErrorMessage={setErrorMessage}/>
           }
         />
 

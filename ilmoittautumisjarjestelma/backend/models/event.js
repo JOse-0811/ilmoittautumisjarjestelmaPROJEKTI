@@ -13,12 +13,24 @@ Event.init({
 
   name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    validate:{
+      len: {
+        args: [3, 50],
+        msg: 'Name must be between 3 and 50 characters long'
+      }
+    }
   },
 
   description: {
     type: DataTypes.TEXT,
-    allowNull: true
+    allowNull: true,
+    validate:{
+      max: {
+        args: 300,
+        msg: 'Description must be shorter than 300 characters long'
+      }
+    }
   },
 
   date: {
@@ -28,7 +40,13 @@ Event.init({
 
   location: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    validate:{
+      len: {
+        args: [3, 50],
+        msg: 'Location must be between 3 and 50 characters long'
+      }
+    }
   }
 
 }, {

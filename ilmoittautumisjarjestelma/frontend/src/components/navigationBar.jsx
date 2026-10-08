@@ -30,9 +30,14 @@ const NavigationBar = ({user, handleLogout}) => {
               </>
             ) : (
               <>
-                <Link to="/createEvent" style={{color: 'white', textDecoration: 'none'}}>
+                <Button component={Link}  to="/" style={{color: 'white', textDecoration: 'none'}}>
+                  Home
+                </Button>
+
+                <Button component={Link} to="/createEvent" style={{color: 'white', textDecoration: 'none'}}>
                   Create event
-                </Link> 
+                </Button> 
+                
                 <Button onClick={handleLogout} color="inherit">
                   Logout
                 </Button>
