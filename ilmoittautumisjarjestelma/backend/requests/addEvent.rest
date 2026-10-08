@@ -1,9 +1,10 @@
 POST http://localhost:3001/api/events
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Impvc2UiLCJpZCI6MywiaWF0IjoxNzkxNDQzMTQ3LCJleHAiOjE3OTE0NDY3NDd9.Tps2L6iPHBM7n6vWKyO9rj8HXSKUGTwLfuUeoOBLHjM
 
 {
-    "name": "juoksu",
-    "description": "nooo",
-    "location": "espoo",
-    "date": "2026-10-30T18:30"
+  "name": "Test Event",
+  "description": "testttttttt",
+  "location": "hell",
+  "date": "2026-11-15T18:00:00.000Z"
 }
