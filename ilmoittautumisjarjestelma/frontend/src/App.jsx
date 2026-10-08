@@ -1,7 +1,8 @@
 import {
   BrowserRouter as Router,
+  useNavigate,
   Routes,
-  Route,
+  Route
 } from 'react-router-dom'
 import {
   Typography,
@@ -22,6 +23,7 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const [successMessage, setSuccessMessage] = useState(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedEventappUser')
@@ -33,16 +35,15 @@ const App = () => {
     }
   }, [])
 
-
-
   const handleLogout = () => {
     window.localStorage.removeItem('loggedEventappUser')
     eventService.setToken(null)
     setUser(null)
+    navigate('/')
   }
 
   return (
-    <Router>
+    <>
       <NavigationBar user={user} handleLogout={handleLogout} />
 
       <Notification message={successMessage || errorMessage} />
@@ -57,13 +58,13 @@ const App = () => {
         <Route
           path="/createEvent"
           element={
-            <EventCreation setErrorMessage={setErrorMessage}/>
+            <EventCreation setErrorMessage={setErrorMessage} />
           }
         />
         <Route
           path="/createEvent"
           element={
-            <EventCreation setErrorMessage={setErrorMessage}/>
+            <EventCreation setErrorMessage={setErrorMessage} />
           }
         />
 
@@ -89,7 +90,7 @@ const App = () => {
           }
         />
       </Routes>
-    </Router >
+    </>
   )
 }
 
