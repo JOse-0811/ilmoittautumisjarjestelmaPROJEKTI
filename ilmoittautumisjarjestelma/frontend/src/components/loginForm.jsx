@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import eventService from '../services/events'
 import loginService from '../services/login'
+import { TextField, Button } from '@mui/material'
 
 const LoginForm = ({ setUser, setErrorMessage }) => {
 
@@ -37,25 +38,23 @@ const LoginForm = ({ setUser, setErrorMessage }) => {
     <form onSubmit={handleLogin}>
       <div>
         <h2>Login</h2>
-        <label>
-          username
-          <input type="text"
-            value={username}
-            onChange={({ target }) => setUsername(target.value)}
-          />
-        </label>
-      </div>
+        <TextField
+          label="username"
+          type="text"
+          value={username}
+          onChange={({ target }) => setUsername(target.value)}
+        />
+      </div><br />
       <div>
-        <label>
-          password
-          <input type="password"
-            value={password}
-            onChange={({ target }) => setPassword(target.value)}
-          />
-        </label>
-      </div>
-      <button type="submit">Login</button>
-    </form>
+        <TextField
+          label="password"
+          type="password"
+          value={password}
+          onChange={({ target }) => setPassword(target.value)}
+        />
+      </div><br />
+      <Button type="submit">Login</Button>
+    </form >
   )
 }
 
