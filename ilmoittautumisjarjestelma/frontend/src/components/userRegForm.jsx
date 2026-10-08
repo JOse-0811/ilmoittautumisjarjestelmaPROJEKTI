@@ -1,6 +1,7 @@
-import { useParams, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import userService from '../services/users'
+import { TextField, Button } from '@mui/material'
 
 const RegisterUser = ({ setErrorMessage, setSuccessMessage }) => {
 
@@ -92,31 +93,31 @@ const RegisterUser = ({ setErrorMessage, setSuccessMessage }) => {
 
       <form onSubmit={handleSubmitUser}>
         <div>
-          <label>Name: </label>
-          <input
+          <TextField
+            label="Name:"
             value={name}
             onChange={event => setName(event.target.value)}
           />
         </div>
-
+        <br />
         <div>
-          <label>Username: </label>
-          <input
+          <TextField
+            label="Username:"
             value={username}
             onChange={event => setUsername(event.target.value)}
           />
         </div>
-
+        <br />
         <div>
-          <label>Password: </label>
-          <input
+          <TextField
+            label="Password:"
             type="password"
             value={password}
             onChange={event => setPassword(event.target.value)}
           />
         </div>
-
-        <button type="submit">Register</button>
+        <br />
+        <Button type="submit">Register</Button>
       </form>
     </div>
   )
