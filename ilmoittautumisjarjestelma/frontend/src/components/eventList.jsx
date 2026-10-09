@@ -8,7 +8,7 @@ import Paper from '@mui/material/Paper'
 import PersonIcon from '@mui/icons-material/Person';
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { Button } from '@mui/material'
+import { Button, Typography } from '@mui/material'
 import eventService from '../services/events'
 
 const EventRow = ({
@@ -90,7 +90,8 @@ const EventList = ({
 }) => {
   return (
     <>
-      <h2>Events</h2>
+      <br />
+      <Typography variant="h4" sx={{ color: '#7bbad3' }}>Events</Typography><br />
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

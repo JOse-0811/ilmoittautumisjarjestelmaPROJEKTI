@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { TextField, Typography, Box } from '@mui/material'
+import { TextField, Typography, Box, Button } from '@mui/material'
+import { green } from '@mui/material/colors';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
-import { Button } from '@mui/material'
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import eventService from '../services/events';
 import { useNavigate } from 'react-router-dom'
@@ -34,7 +34,8 @@ const EventCreation = ({ setErrorMessage }) => {
   }
 
   return (
-    <>
+    <div align="center">
+      <br />
       <Box
         component="form"
         sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
@@ -42,16 +43,16 @@ const EventCreation = ({ setErrorMessage }) => {
         autoComplete="off"
         onSubmit={handleCreateEvent}
       >
-        <Typography variant='h4' >New event</Typography>
-        <TextField required value={name} onChange={({ target }) => setName(target.value)} label="Name" variant="filled" />
-        <TextField required value={description} onChange={({ target }) => setDescription(target.value)} label="Description" variant="filled" />
+        <Typography variant='h4' sx={{ color: '#7bbad3' }}>New event</Typography>
+        <TextField required value={name} onChange={({ target }) => setName(target.value)} label="Name" variant="filled" align="left" /><br />
+        <TextField required value={description} onChange={({ target }) => setDescription(target.value)} label="Description" variant="filled" align="left" /><br />
+        <TextField required value={location} onChange={({ target }) => setLocation(target.value)} label="Location" variant="filled" align="left" /><br />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateTimePicker required value={date} onChange={setDate} label="Date and time" />
+          <DateTimePicker required value={date} onChange={setDate} label="Date and time" align="left" /><br />
         </LocalizationProvider>
-        <TextField required value={location} onChange={({ target }) => setLocation(target.value)} label="Location" variant="filled" />
-        <Button type='submit'><PostAddIcon color="success" />Create</Button>
+        <Button type='submit' sx={{ color: '#a5d6a7' }}><PostAddIcon sx={{ color: green[200] }} />Create</Button>
       </Box>
-    </>
+    </div>
   )
 }
 
