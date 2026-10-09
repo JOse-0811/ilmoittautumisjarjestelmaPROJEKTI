@@ -15,6 +15,8 @@ import Notification from './components/notifications'
 import Register from './components/userRegistration'
 import NavigationBar from './components/navigationBar'
 import Home from './pages/home'
+import EventRegistrationForm from './components/eventRegistrationForm'
+import { useNavigate } from 'react-router-dom';
 
 const App = () => {
 
@@ -33,15 +35,18 @@ const App = () => {
   }, [])
 
 
-
   const handleLogout = () => {
     window.localStorage.removeItem('loggedEventappUser')
     eventService.setToken(null)
     setUser(null)
   }
-
+  
   return (
     <Router>
+
+
+  
+
       <NavigationBar user={user} handleLogout={handleLogout} />
 
       <Notification message={errorMessage} />
@@ -53,7 +58,14 @@ const App = () => {
             <Home user={user} setUser={setUser} setErrorMessage={setErrorMessage} />
           }
         />
-
+        <Route
+        path="/registrations/:eventId"
+        element={
+          <Card sx={{ maxWidth: 800, mx: 'auto', my: 4}}>
+          <EventRegistrationForm/>
+          </Card>
+        }
+        />
         <Route
           path="/register"
           element={
@@ -75,6 +87,6 @@ const App = () => {
       </Routes>
     </Router >
   )
-}
 
+}
 export default App

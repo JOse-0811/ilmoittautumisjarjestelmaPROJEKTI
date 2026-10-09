@@ -9,6 +9,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Button } from '@mui/material';
+import { Link } from 'react-router-dom'
+
 
 const EventRow = ({ event }) => {
   const date = new Date(event.date)
@@ -23,7 +25,7 @@ const EventRow = ({ event }) => {
       <TableCell align="right">{date.getHours()}.{date.getMinutes()}</TableCell>
       <TableCell align="right">{event.location}</TableCell>
       <TableCell align="right"><PersonIcon/>{event.registrationCount}</TableCell>
-      <TableCell align="right"><Button><AssignmentIcon/></Button></TableCell>
+      <TableCell align="right"><Button component={Link} to={`/registrations/${event.id}`}><AssignmentIcon/></Button></TableCell>
       <TableCell align="right"><Button><DeleteIcon/></Button></TableCell>
     </TableRow>
   )
