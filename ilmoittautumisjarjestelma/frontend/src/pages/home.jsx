@@ -24,7 +24,7 @@ const Home = ({ user, setUser, setErrorMessage, setSuccessMessage }) => {
   return (
     user ? (
       <Box sx={{ maxWidth: 800, mx: 'auto', my: 4, px: 2 }}>
-        <Typography variant="h5">
+        <Typography variant="h5" sx={{ color: '#7bbad3' }}>
           {user.username} is logged in.
         </Typography>
         <EventList events={events} setEvents={setEvents} setErrorMessage={setErrorMessage} setSuccessMessage={setSuccessMessage}/>

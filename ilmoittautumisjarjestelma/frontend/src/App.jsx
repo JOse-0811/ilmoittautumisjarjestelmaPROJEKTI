@@ -10,6 +10,7 @@ import {
   CardContent,
   Box
 } from '@mui/material'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState, useEffect } from 'react'
 import eventService from './services/events'
 import Notification from './components/notifications'
@@ -20,12 +21,51 @@ import EventCreation from './pages/EventCreation'
 
 const App = () => {
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#9ac7ae',
+        contrastText: '#ffffff',
+      },
+      secondary: {
+        main: '#fcc6f0',
+        contrastText: '#FFFFFF',
+      },
+      error: {
+        main: '#f18c98',
+      },
+      background: {
+        default: '#fdfdfd',
+        paper: '#fdfdfd',
+      },
+      text: {
+        primary: '#63a9c5',
+        secondary: '#a2cadd',
+      },
+      divider: '#4d5a74',
+    },
+    typography: {
+      fontFamily: '"Averia Serif Libre", serif',
+      h1: { fontWeight: 800 },
+      h2: { fontWeight: 800 },
+      h3: { fontWeight: 800 },
+      h4: { fontWeight: 800 },
+      h5: { fontWeight: 700 },
+      h6: { fontWeight: 700 },
+    },
+  });
+
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState(null)
   const [successMessage, setSuccessMessage] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
+    const fontLink = document.createElement('link')
+    fontLink.href = 'https://fonts.googleapis.com/css?family=Averia Serif Libre'
+    fontLink.rel = 'stylesheet'
+    document.head.appendChild(fontLink)
+
     const loggedUserJSON = window.localStorage.getItem('loggedEventappUser')
 
     if (loggedUserJSON) {
@@ -43,7 +83,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <NavigationBar user={user} handleLogout={handleLogout} />
 
       <Notification message={successMessage || errorMessage} />
@@ -74,7 +114,7 @@ const App = () => {
             user ? (
               <Box sx={{ maxWidth: 800, mx: 'auto', my: 4, px: 2 }}>
                 <Typography variant="h5">
-                  {user.username} is logged in.
+                  {user.username} is logged in, welcome!
                 </Typography>
               </Box>
             ) : (
@@ -90,7 +130,7 @@ const App = () => {
           }
         />
       </Routes>
-    </>
+    </ThemeProvider>
   )
 }
 
