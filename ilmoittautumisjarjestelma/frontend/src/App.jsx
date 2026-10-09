@@ -130,6 +130,21 @@ const App = () => {
           }
         />
       </Routes>
+
+      <Box
+        sx={{
+          position: 'fixed',
+          bottom: 16,
+          right: 16,
+          zIndex: 1200,
+          textAlign: 'right',
+          color: 'text.secondary',
+        }}
+      >
+        <Typography variant="caption" component="h6" sx={{ m: 0, fontSize: '0.75rem' }}>
+          Created by: Josette Collin, Emilia Kotkavuori, Deina Slade
+        </Typography>
+      </Box>
     </ThemeProvider>
   )
 }
