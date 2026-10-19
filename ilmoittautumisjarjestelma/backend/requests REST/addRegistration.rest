@@ -1,0 +1,8 @@
+POST http://localhost:3001/api/registrations
+Content-Type: application/json
+
+{
+    "eventId":3,
+    "name":"sad",
+    "email":"wdasea@gmail.com"
+}
