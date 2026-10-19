@@ -9,6 +9,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { Button, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
 import eventService from '../services/events'
 
 const EventRow = ({
@@ -71,7 +72,7 @@ const EventRow = ({
       <TableCell align="right">{event.location}</TableCell>
       <TableCell align="right"><PersonIcon />{event.registrationCount}</TableCell>
       <TableCell align="right">
-        <Button><AssignmentIcon /></Button>
+        <Button component={Link} to={`/registrations/${event.id}`}><AssignmentIcon /></Button>
       </TableCell>
       <TableCell align="right">
         <Button onClick={handleDelete} color="error">

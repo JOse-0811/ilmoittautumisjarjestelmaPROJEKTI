@@ -18,6 +18,8 @@ import Register from './components/userRegForm'
 import NavigationBar from './components/navigationBar'
 import Home from './pages/home'
 import EventCreation from './pages/EventCreation'
+import EventRegistrationForm from './components/eventRegistrationForm'
+
 
 const App = () => {
 
@@ -75,15 +77,21 @@ const App = () => {
     }
   }, [])
 
+
+
   const handleLogout = () => {
     window.localStorage.removeItem('loggedEventappUser')
     eventService.setToken(null)
     setUser(null)
     navigate('/')
   }
-
+  
   return (
     <ThemeProvider theme={theme}>
+
+
+  
+
       <NavigationBar user={user} handleLogout={handleLogout} />
 
       <Notification message={successMessage || errorMessage} />
@@ -107,7 +115,14 @@ const App = () => {
             <EventCreation setErrorMessage={setErrorMessage} />
           }
         />
-
+        <Route
+        path="/registrations/:eventId"
+        element={
+          <Card sx={{ maxWidth: 800, mx: 'auto', my: 4}}>
+          <EventRegistrationForm/>
+          </Card>
+        }
+        />
         <Route
           path="/register"
           element={
