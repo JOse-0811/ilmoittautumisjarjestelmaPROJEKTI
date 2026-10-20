@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import register from '../services/registration';
 import { useParams } from 'react-router-dom';
-import { Card } from '@mui/material';
+import { Card, TextField, Button, Typography, Box } from '@mui/material';
 
 const EventRegistrationForm = () => {
   const navigate = useNavigate();
@@ -28,31 +28,35 @@ const EventRegistrationForm = () => {
   };
 
   return (
-    <Card sx={{ maxWidth: 800, mx: 'auto', my: 4 }}>
-      <form onSubmit={handleRegistration}>
+    <Card sx={{ maxWidth: 350, mx: 'auto', my: 10 }}>
+      <Box
+        component="form"
+        sx={{ '& > :not(style)': { m: 3, width: '25ch' } }}
+        onSubmit={handleRegistration}>
+        <Typography variant="h5">
+          Register for the event
+        </Typography>
         <div>
-          <label> Name
-            <input
-              type="text"
-              value={name}
-              onChange={({ target }) => setName(target.value)} required />
-          </label>
+          <TextField
+            label="Name"
+            type="text"
+            value={name}
+            onChange={({ target }) => setName(target.value)} required />
         </div>
 
         <div>
-          <label> Email
-            <input
-              type="email"
-              value={email}
-              onChange={({ target }) => setEmail(target.value)}
-              required />
-          </label>
+          <TextField
+            label="Email"
+            type="email"
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
+            required />
         </div>
 
         {errorMessage && <p role="alert">{errorMessage}</p>}
 
-        <button type="submit">Participate</button>
-      </form>
+        <Button type="submit">Participate</Button>
+      </Box>
     </Card>
   );
 };
