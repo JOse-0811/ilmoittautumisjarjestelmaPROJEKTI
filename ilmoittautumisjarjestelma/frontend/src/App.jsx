@@ -77,20 +77,15 @@ const App = () => {
     }
   }, [])
 
-
-
   const handleLogout = () => {
     window.localStorage.removeItem('loggedEventappUser')
     eventService.setToken(null)
     setUser(null)
     navigate('/')
   }
-  
+
   return (
     <ThemeProvider theme={theme}>
-
-
-  
 
       <NavigationBar user={user} handleLogout={handleLogout} />
 
@@ -110,18 +105,10 @@ const App = () => {
           }
         />
         <Route
-          path="/createEvent"
+          path="/registrations/:eventId"
           element={
-            <EventCreation setErrorMessage={setErrorMessage} />
+            <EventRegistrationForm />
           }
-        />
-        <Route
-        path="/registrations/:eventId"
-        element={
-          <Card sx={{ maxWidth: 800, mx: 'auto', my: 4}}>
-          <EventRegistrationForm/>
-          </Card>
-        }
         />
         <Route
           path="/register"
