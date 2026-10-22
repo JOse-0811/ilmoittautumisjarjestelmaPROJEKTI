@@ -107,8 +107,7 @@ const App = () => {
         <Route
           path="/registrations/:eventId"
           element={
-            
-              <EventRegistrationForm />
+            <EventRegistrationForm />
           }
         />
         <Route
