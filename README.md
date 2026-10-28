@@ -5,10 +5,10 @@ Kouluprojektina tehty tapahtumien ilmoittautumisjärjestelmä.
 - Emilia Kotkavuori
 - Deina Slade
 ## OMINAISUUDET
--Käyttäjän rekisteröityminen ja kirjautuminen
--Tapahtumien selaaminen ja ilmoittautuminen
--Uuden tapahtuman lisääminen
--Käyttäjä, joka on lisännyt uuden tapahtuman, voi myös poistaa sen
+- Käyttäjän rekisteröityminen ja kirjautuminen
+- Tapahtumien selaaminen ja ilmoittautuminen
+- Uuden tapahtuman lisääminen
+- Käyttäjä, joka on lisännyt uuden tapahtuman, voi myös poistaa sen
 ## TEKNOLOGIAT
 - React
 - Node.js
